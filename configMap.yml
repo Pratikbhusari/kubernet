@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: pratik-ConfigMap
+
+data:
+  DB_Host: Mongodb
+  DB_Port: "27017"
+  DB_User: admin
+  APP_name: ghee_app
+  APP_Port: "5656"

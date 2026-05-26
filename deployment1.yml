@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: nginx
+  labels:
+    first: app
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: web
+
+  template:
+    metadata:
+      labels:
+        app: web
+
+    spec:
+      containers:
+        - name: nginxcontainer
+          image: nginx
+          ports:
+            - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: pratik-service
+
+spec:
+  type: NodePort
+
+  selector:
+    app: web
+
+  ports:
+    - protocol: TCP
+      port: 85
+      targetPort: 80
+      NodePort:3000

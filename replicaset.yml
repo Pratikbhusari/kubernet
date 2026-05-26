@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: pratikReplicaSet
+  labels:
+    app: web
+
+spec: #defines the behavior of replicaset
+  replicas: 2
+
+  selector:
+    matchLabels:
+      web: vegetable
+
+  template:
+    metadata:
+      labels:
+        web: vegetable
+    
+    spec:
+      containers:
+        - name: vegetable-container
+          image: pratikbhusari10/vegi:v1.0.0
+          ports:
+            - containerPort: 3000

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pratik-pod
+spec:
+  containers:
+    - name: vegetable
+      image: pratikbhusari10/vegt:v1.0.0
+      ports:
+        - containerPort: 3000
+
+    - name: organicghee
+      image: pratikbhusari10/gheec:v1.0.0
+      ports:
+        - containerPort: 4000
