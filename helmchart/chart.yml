@@ -1,0 +1,6 @@
+apiVersion: v2
+name: doctors-appointment-chart
+description: Helm chart for Doctors Appointment Application
+type: application
+version: 1.0.0
+appVersion: "1.0.0"

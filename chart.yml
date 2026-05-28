@@ -1,0 +1,4 @@
+apiVersion: v2
+name: ghee-app
+version: 1.0.0
+description: Ghee Application Helm Chart

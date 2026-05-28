@@ -1,0 +1,8 @@
+replicaCount: 2
+
+image:
+  repository: pratikbhusari10/gheec
+  tag: v1.0.0
+
+service:
+  port: 5656

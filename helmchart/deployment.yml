@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: {{ .Release.Name }}-deployment
+
+spec:
+  replicas: {{ .Values.replicaCount }}
+
+  selector:
+    matchLabels:
+      app: doctors-app
+
+  template:
+    metadata:
+      labels:
+        app: doctors-app
+
+    spec:
+      containers:
+      - name: doctors-container
+
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+
+        ports:
+        - containerPort: {{ .Values.service.port }}
+
+        env:
+
+        # ConfigMap Variables
+        - name: APP_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: {{ .Release.Name }}-config
+              key: APP_NAME
+
+        - name: APP_ENV
+          valueFrom:
+            configMapKeyRef:
+              name: {{ .Release.Name }}-config
+              key: APP_ENV
+
+        - name: APP_MESSAGE
+          valueFrom:
+            configMapKeyRef:
+              name: {{ .Release.Name }}-config
+              key: APP_MESSAGE
+
+        # Secret Variables
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-secret
+              key: DB_USERNAME
+
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-secret
+              key: DB_PASSWORD

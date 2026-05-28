@@ -1,0 +1,20 @@
+replicaCount: 2
+
+image:
+  repository: pratikbhusari10/doc
+  tag: v1.0.0
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 5173
+  nodePort: 30173
+
+config:
+  APP_NAME: "doctors-appointment"
+  APP_ENV: "production"
+  APP_MESSAGE: "Welcome to Doctors Appointment Application"
+
+secret:
+  DB_USERNAME: "admin"
+  DB_PASSWORD: "admin123"
